@@ -8,7 +8,7 @@ def testTrialDiv(p: int, threshold=0) -> bool:
             return False
         
         if threshold and i == threshold:
-            return False
+            raise Exception(f"Threshold was reached: {threshold}")
         
     return True
 
@@ -40,3 +40,6 @@ def testMillerRabin(p: int, k: int) -> bool:
             
     return True
 
+
+if __name__ == "__main__":
+    print(testMillerRabin(393050634124102232869567034555427371542904833))
