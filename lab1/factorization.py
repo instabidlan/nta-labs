@@ -1,5 +1,5 @@
 from random import randint
-from math import gcd, log10, sqrt
+from math import gcd, sqrt
 from tests import testMillerRabin, testTrialDiv
 
 
@@ -18,7 +18,7 @@ class rhoPollard:
 
 
     def isPrime(self) -> bool:
-        if log10(self._n) <= 65537**2:
+        if self._n <= 65537**2:
             is_prime = testTrialDiv(self._n)
         else:
             is_prime = testMillerRabin(self._n)
@@ -42,24 +42,24 @@ class rhoPollard:
                         return d
                     
     
-    # def variantFloyd(self) -> int:
-    #     while True:
-    #         if self.isPrime():
-    #             return self._n
+    def variantFloyd(self) -> int:
+        while True:
+            if self.isPrime():
+                return self._n
             
-    #         init_orbit_len = len(self._orbit)
-    #         self.buildOrbit(10)
+            init_orbit_len = int(sqrt(len(self._orbit)))
+            self.buildOrbit(16)
 
-    #         for j in range(init_orbit_len, int(sqrt(len(self._orbit)))):
-    #             d = gcd(abs(self._orbit[j ** 2] - self._orbit[j]), self._n)
+            for j in range(init_orbit_len, int(sqrt(len(self._orbit)))):
+                d = gcd(abs(self._orbit[j ** 2] - self._orbit[j]), self._n)
 
-    #             if d != 1 and d != self._n:
-    #                 return d
+                if d != 1 and d != self._n:
+                    return d
 
 
 if __name__ == "__main__":
     n = 1032443261
     A = rhoPollard(n)
     print(A.variantClassic())
-    # print(A.variantFloyd())
+    print(A.variantFloyd())
         
