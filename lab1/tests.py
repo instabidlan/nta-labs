@@ -3,7 +3,7 @@ from math import gcd, sqrt
 
 
 def testTrialDiv(p: int, threshold=0) -> bool:
-    for d, i in enumerate(range(1, int(sqrt(p)))):
+    for i, d in enumerate(range(2, int(sqrt(p)))):
         if p % d == 0:
             return False
         
