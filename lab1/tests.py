@@ -41,5 +41,14 @@ def testMillerRabin(p: int, k: int) -> bool:
     return True
 
 
+def isPrime(n: int) -> bool:
+        if n <= 65537**2:
+            is_prime = testTrialDiv(n)
+        else:
+            is_prime = testMillerRabin(n)
+
+        return is_prime
+
+
 if __name__ == "__main__":
     print(testMillerRabin(393050634124102232869567034555427371542904833))
