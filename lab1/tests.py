@@ -45,7 +45,7 @@ def isPrime(n: int) -> bool:
         if n <= 65537**2:
             is_prime = testTrialDiv(n)
         else:
-            is_prime = testMillerRabin(n)
+            is_prime = testMillerRabin(n, 10)
 
         return is_prime
 
